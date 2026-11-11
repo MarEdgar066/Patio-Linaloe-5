@@ -1,0 +1,347 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Patio Lináloe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,500&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* Layout: banda crema con título grande a la izquierda y ramas de hoja; menú en tarjetas por categoría; horario con el día de hoy resaltado. */
+:root{
+  --bg:#f7ead2; --surface:#fffaf0; --band:#f3dfbc; --ink:#3b1c0e; --muted:#6a4a36;
+  --terra:#b4491a; --brown:#7a3b1a; --leaf:#4f7a2e; --gold:#e3b04b; --line:#e2c797; --onterra:#fffaf0;
+  --display:'Playfair Display',Georgia,'Times New Roman',serif;
+  --body:'Nunito Sans','Segoe UI',system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#1f120a; --surface:#2c1a0f; --band:#2a170c; --ink:#f6e8d0; --muted:#d4bba0;
+    --terra:#f0904f; --brown:#e0a26a; --leaf:#8fbc5f; --gold:#e3b04b; --line:#4a2e1b; --onterra:#1f120a;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1f120a; --surface:#2c1a0f; --band:#2a170c; --ink:#f6e8d0; --muted:#d4bba0;
+  --terra:#f0904f; --brown:#e0a26a; --leaf:#8fbc5f; --gold:#e3b04b; --line:#4a2e1b; --onterra:#1f120a;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--terra);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{font-family:var(--display);margin:0;text-wrap:balance;line-height:1.1}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px;flex-wrap:wrap}
+.brand{font-family:var(--display);font-weight:800;font-size:22px;text-decoration:none;color:var(--brown);letter-spacing:.5px}
+.top nav{display:flex;gap:6px;flex-wrap:wrap}
+.top nav a{text-decoration:none;font-weight:700;font-size:15px;padding:8px 14px;border-radius:999px;color:var(--ink)}
+.top nav a:hover{background:var(--band)}
+
+.hero{background:var(--band);position:relative;overflow:hidden}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:24px;align-items:center;padding-block:64px 56px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--display);font-weight:700;letter-spacing:.5em;font-size:20px;color:var(--brown)}
+.eyebrow svg{flex:none}
+.hero h1{font-weight:800;font-size:clamp(52px,11vw,116px);letter-spacing:.04em;color:var(--terra);margin-top:10px}
+.lema{font-family:var(--display);font-style:italic;font-weight:500;font-size:clamp(19px,2.4vw,25px);color:var(--ink);margin:18px 0 0;max-width:30ch;text-wrap:balance}
+.lema b{color:var(--terra);font-weight:700}
+.status{display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:10px 18px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-weight:700;font-size:16px}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--terra);flex:none}
+.status[data-open="true"] .dot{background:var(--leaf)}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-block;text-decoration:none;font-weight:700;padding:13px 24px;border-radius:999px;background:var(--terra);color:var(--onterra);min-height:44px}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--brown)}
+.btn:hover{filter:brightness(1.08)}
+.sprig{width:100%;max-width:380px;justify-self:end;height:auto}
+.weave{height:16px;background:repeating-linear-gradient(90deg,var(--terra) 0 28px,var(--brown) 28px 56px,var(--gold) 56px 84px,var(--leaf) 84px 112px)}
+
+section{padding-block:64px 8px}
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+.sec-head h2{font-size:clamp(34px,5vw,48px);font-weight:800;color:var(--ink)}
+.sec-head .rule{flex:1;height:3px;background:var(--brown);min-width:24px;opacity:.7}
+.leaf{width:34px;height:34px;flex:none}
+.lede{color:var(--muted);margin:0 0 20px;max-width:60ch}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px}
+.chips a{text-decoration:none;font-weight:700;font-size:15px;padding:9px 16px;border-radius:999px;border:1.5px solid var(--brown);color:var(--ink);min-height:40px;display:inline-flex;align-items:center}
+.chips a:hover{background:var(--terra);border-color:var(--terra);color:var(--onterra)}
+
+.cat{padding-top:40px;scroll-margin-top:84px}
+.cat h3{font-size:clamp(28px,4vw,36px);font-weight:800;color:var(--terra);display:flex;align-items:center;gap:12px}
+.cat h3::after{content:"";flex:1;height:2px;background:var(--line)}
+.cat h4{font-size:22px;font-weight:700;color:var(--brown);margin:28px 0 0}
+.note{margin:10px 0 0;font-size:15px;font-weight:600;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:16px;margin-top:18px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px 22px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.item .n{font-family:var(--display);font-weight:700;font-size:21px;line-height:1.2}
+.item .q{font-family:var(--body);font-weight:600;font-size:14px;color:var(--muted)}
+.item p{margin:0;font-size:15.5px;color:var(--muted);line-height:1.5}
+.item .x{font-style:italic;color:var(--terra);font-size:15px;font-weight:600}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+.tag{font-size:13px;font-weight:700;padding:3px 12px;border-radius:999px;background:var(--brown);color:var(--surface)}
+:root[data-theme="dark"] .tag{color:var(--bg)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tag{color:var(--bg)}}
+
+.visit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px 28px;min-width:0}
+.card h3{font-size:26px;font-weight:800;margin-bottom:14px;color:var(--brown)}
+.hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hours th,.hours td{text-align:left;padding:11px 8px;border-bottom:1px solid var(--line);font-size:16px}
+.hours th{font-weight:600}
+.hours td{text-align:right;font-weight:700}
+.hours tr:last-child th,.hours tr:last-child td{border-bottom:0}
+.hours tr.closed td{color:var(--terra)}
+.hours tr.today{background:var(--band)}
+.hours tr.today th::after{content:" · hoy";font-weight:700;color:var(--terra)}
+.dl{display:grid;gap:14px;margin:0}
+.dl dt{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dl dd{margin:2px 0 0;font-size:17px;font-weight:600}
+.ph{color:var(--terra)}
+.ph a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px}
+.ph a:hover{text-decoration-thickness:3px}
+.social{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px!important}
+.social a{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border:1.5px solid var(--terra);border-radius:999px;color:var(--terra);text-decoration:none;font-weight:700;font-size:16px}
+.social a:hover{background:var(--terra);color:var(--onterra)}
+
+footer{margin-top:64px;background:var(--band)}
+footer .wrap{padding-block:36px 40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+footer .brand{font-size:26px}
+footer p{margin:0;font-family:var(--display);font-style:italic;font-size:19px;color:var(--ink)}
+footer p b{color:var(--terra)}
+
+@media (max-width:760px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr);padding-block:44px 40px}
+  .sprig{display:none}
+  .visit{grid-template-columns:minmax(0,1fr)}
+  .eyebrow{letter-spacing:.38em;font-size:17px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="leaf" viewBox="0 0 40 40"><path d="M6 34C6 16 18 6 34 6c0 16-10 28-28 28z" fill="#5f8a3a"/><path d="M6 34L26 14" stroke="#2f4a1a" stroke-width="1.8" fill="none"/></symbol>
+    <symbol id="rombo" viewBox="0 0 22 22"><path d="M11 1 L21 11 L11 21 L1 11z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="11" cy="11" r="2.5" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio">Patio Lináloe</a>
+    <nav aria-label="Principal">
+      <a href="#menu">Menú</a>
+      <a href="#horario">Horario</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow"><svg width="20" height="20" aria-hidden="true" style="color:var(--terra)"><use href="#rombo"/></svg>PATIO<svg width="20" height="20" aria-hidden="true" style="color:var(--terra)"><use href="#rombo"/></svg></div>
+        <h1>LINÁLOE</h1>
+        <p class="lema">Dos espacios, una misma esencia, <b>una sola familia.</b></p>
+        <div class="status" id="status" role="status" data-open="false"><span class="dot" aria-hidden="true"></span><span id="status-text">Viernes a miércoles · 8:00 am a 2:00 pm</span></div>
+        <div class="cta">
+          <a class="btn" href="#menu">Ver el menú</a>
+          <a class="btn alt" href="#horario">Horario y ubicación</a>
+        </div>
+      </div>
+      <svg class="sprig" viewBox="0 0 380 340" aria-hidden="true">
+        <path d="M370 10 C250 40 120 120 40 330" stroke="#3f5a26" stroke-width="5" fill="none"/>
+        <path d="M330 24 C300 -4 250 6 236 36 C262 60 306 56 330 24z" fill="#5f8a3a"/>
+        <path d="M260 66 C232 42 188 52 176 82 C202 102 244 98 260 66z" fill="#6f9a45"/>
+        <path d="M200 112 C170 88 128 100 118 130 C144 150 184 146 200 112z" fill="#5f8a3a"/>
+        <path d="M146 168 C118 146 78 160 70 190 C96 208 134 202 146 168z" fill="#6f9a45"/>
+        <path d="M100 232 C74 214 38 228 32 256 C56 272 90 264 100 232z" fill="#5f8a3a"/>
+        <path d="M300 88 C328 112 326 150 300 166 C276 142 278 108 300 88z" fill="#6f9a45"/>
+        <path d="M236 150 C262 172 260 208 234 224 C212 202 214 168 236 150z" fill="#5f8a3a"/>
+        <path d="M170 220 C196 242 192 276 168 292 C146 270 148 238 170 220z" fill="#6f9a45"/>
+      </svg>
+    </div>
+  </div>
+  <div class="weave" aria-hidden="true"></div>
+
+  <section id="menu" aria-labelledby="menu-t">
+    <div class="wrap">
+      <div class="sec-head"><svg class="leaf" aria-hidden="true"><use href="#leaf"/></svg><h2 id="menu-t">Menú</h2><div class="rule"></div></div>
+      <p class="lede">Ensaladas, desayunos, antojitos y bebidas de la casa. Elige una categoría para ir directo.</p>
+      <nav class="chips" id="chips" aria-label="Categorías del menú"></nav>
+      <div id="carta"></div>
+    </div>
+  </section>
+
+  <section id="horario" aria-labelledby="hor-t">
+    <div class="wrap">
+      <div class="sec-head"><svg class="leaf" aria-hidden="true"><use href="#leaf"/></svg><h2 id="hor-t">Horario y ubicación</h2><div class="rule"></div></div>
+      <div class="visit">
+        <div class="card">
+          <h3>Abrimos de viernes a miércoles</h3>
+          <table class="hours" id="hours">
+            <caption class="sr" style="position:absolute;left:-9999px">Horario por día</caption>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h3>Visítanos</h3>
+          <dl class="dl">
+            <div><dt>Dirección</dt><dd class="ph"> Ramon corona #19</dd></div>
+            <div><dt>Teléfono</dt><dd class="ph"><a href="https://wa.me/527331071545?text=Hola%2C%20quisiera%20informaci%C3%B3n" target="_blank" rel="noopener noreferrer" aria-label="Enviar mensaje por WhatsApp al 733 107 15 45">733-107-15-45 para WhatsApp</a></dd></div>
+            <div><dt>Teléfono</dt><dd class="ph"><a href="tel:+527331107193" aria-label="Llamar al 733 110 71 93">733-110-71-93 para llamadas</a></dd></div>
+            <div><dt>Redes sociales</dt><dd class="social">
+              <a href="https://www.facebook.com/share/1EBcf6sbdN/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.3H7.9v3h2.6V21h3z"/></svg>Facebook</a>
+              <a href="https://www.instagram.com/patiolinaloe" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
+            </dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#inicio">Patio Lináloe</a>
+    <p>Dos espacios, una misma esencia, <b>una sola familia.</b></p>
+  </div>
+  <div class="weave" aria-hidden="true"></div>
+</footer>
+
+<script>
+(function(){
+  var CARTA = [
+    {id:'ensaladas',t:'Ensaladas',note:'Todas las ensaladas se acompañan con crotones y aderezo.',items:[
+      {n:'Ensalada Primavera',d:'Corazones de lechuga, espinaca, manzana verde, queso panela, arándanos y frutos secos.',x:'Aderezo de mostaza miel y limón.'},
+      {n:'Ensalada Lináloe',d:'Lechuga italiana, mezcla de tomates aliñados, fresa, manzana roja, arándanos, queso de cabra encamisado con nuez.',x:'Aderezo de frutos rojos y vinagre balsámico.'},
+      {n:'Ensalada Griega',d:'Tomate en gajos, pepino, cebolla morada, aceitunas, mezcla de pimientos, queso feta.',x:'Vinagreta de balsámico.'},
+      {n:'Ensalada Suprema',d:'Mezcla de lechugas, aguacate, zanahoria, naranja, tomate en gajos, cebolla morada y pollo o salmón.',x:'Aderezo de mostaza, miel y limón.'}]},
+    {id:'bowls',t:'Bowls',items:[
+      {n:'Bowl Frutal',d:'Yogurt griego, frutos rojos, durazno, kiwi, chía y crema de cacahuate o de avellanas.'},
+      {n:'Bowl Proteico',d:'Base de cuscús con vegetales, falafel de garbanzo y lentejas, chícharos salteados, brócoli y huevo cocido.',x:'Tzatziki como aderezo.'},
+      {n:'Poke Bowl',d:'Base de arroz blanco, cremoso de aguacate, tomates cherris, zanahoria, betabel, salmón y semillas de sésamo.',x:'Mayonesa de sriracha.'}]},
+    {id:'desayunos',t:'Desayunos',items:[
+      {n:'Desayuno Americano',d:'Huevos revueltos con jamón y tocino, hot cakes tradicionales y café.'},
+      {n:'Para los Peques',d:'Huevos revueltos, fruta de temporada, waffles y naranjada.'},
+      {n:'Waffles'},
+      {n:'Hot Cakes',q:'3 piezas por porción',tags:['Integrales','Clásicos']},
+      {n:'Club Sándwich',d:'De jamón con queso y tocino o ensalada rusa.'},
+      {n:'Omelettes',d:['Especiales: espinaca, betabel o zanahoria rellenos de pimiento, champiñón y queso.','Vegetarianos: relleno de acelgas con o sin queso.','Sencillos: omelette clásico.']},
+      {n:'Pan Francés',d:'Pan brioche dorado en mantequilla acompañado de mermelada y helado de vainilla.'}]},
+    {id:'mexicano',t:'Lo Mexicano',items:[
+      {n:'Enchiladas Verdes',q:'4 piezas',d:'Con pollo, crema, queso y verdura.'},
+      {n:'Enchiladas Gratinadas',q:'4 piezas',d:'Salsa verde cremosa con queso gratinado, aguacate y pollo.'},
+      {n:'Chilaquiles de la Casa'},
+      {n:'Enmoladas',q:'4 piezas',d:'Con pollo, crema, queso y verdura.'},
+      {n:'Enfrijoladas',q:'4 piezas',d:'Con crema, queso y verdura.'},
+      {n:'Molletes',q:'2 piezas',d:'Con frijoles, chorizo, queso y pico de gallo.'}]},
+    {id:'especialidades',t:'Especialidades',note:'Remplazo de jamón de pavo por pechuga de pavo $10 extra (aplica en todos los productos que lleven dicho embutido).',items:[
+      {n:'Baguette de Arrachera con Queso',d:'Cremoso de aguacate, pico de gallo y cebollas glaseadas.'},
+      {n:'Baguette Clásico',d:'Mayonesa, jamón de pavo, lechuga, jitomate, cebolla y queso manchego.'},
+      {n:'Baguette Lináloe',d:'Mayonesa, pollo frito glaseado, chutney de cebolla, lechuga y rodajas de pepino.'},
+      {n:'Chapata',d:'Aceite de oliva, jamón de pavo, queso, lechuga, cebolla y jitomate.'},
+      {n:'Chapata Especial',d:'Base de salsa pesto, tomates cherris confitados, jamón de pavo, queso mozzarella fresco y arúgula.'},
+      {n:'Croissant de Jamón con Queso',d:'Croissant dorado con jamón de pavo, tocino y queso manchego o amarillo.'},
+      {n:'Croissant Especial',d:'Jamón de pavo, queso gratinado, mermelada de tocino, lechuga, jitomate y cebolla.'},
+      {n:'Bruschettas',q:'3 piezas',d:'Rebanadas de pan rústico con jitomate aliñado con vinagre balsámico, aceite de oliva y albahaca fresca.'}]},
+    {id:'toasts',t:'Toasts',items:[
+      {n:'Avocado Toast',d:'Pan brioche tostado con cremoso de aguacate, hojuelas de chile, pimienta recién molida y salmón curado.'},
+      {n:'Toast de Higos',d:'Pan brioche tostado con queso ricota, mermelada de higos al horno y jamón serrano.'},
+      {n:'Toast de Durazno',d:'Pan brioche tostado con queso crema, duraznos asados, miel y pimienta recién molida.'}]},
+    {id:'bebidas',t:'Bebidas',subs:[
+      {t:'Infusiones',items:[
+        {n:'La Sensación',d:'Naranja, limón, jengibre, Jamaica, manzana roja y miel.'},
+        {n:'Infusión Fría de Frutos del Bosque',d:'Té verde, cúrcuma y frutos rojos.'},
+        {n:'Infusión Lináloe',d:'Menta, estragón, frutos rojos y agua mineral.'},
+        {n:'Azomalli',d:'Cúrcuma, manzanilla, pimienta negra y nuez moscada.'},
+        {n:'Matcha caliente'}]},
+      {t:'Malteadas',items:[{n:'Fresa'},{n:'Vainilla'},{n:'Chocolate'},{n:'Matcha'}]},
+      {t:'Smoothies',items:[
+        {n:'Antioxidante',d:'Frutos rojos, yogurt griego, arándanos y leche.'},
+        {n:'Batido de Mango',d:'Mango, plátano, leche de soya y cúrcuma en polvo.'},
+        {n:'Proteico',d:'Leche, yogurt griego, nuez de la india, crema de cacahuate y avena en hojuelas.'}]},
+      {t:'Café y más',items:[
+        {n:'Café de Olla',d:'Especiado con canela, semilla de anís y naranja, endulzado con piloncillo.'},
+        {n:'Chocolate Caliente'},
+        {n:'Café Americano',q:'con refil'},
+        {n:'Soda Italiana',d:'Jarabe de fruta a elección y agua mineral.'},
+        {n:'Naranjada',q:'natural o mineral'},
+        {n:'Limonada',q:'natural o mineral'}]},
+      {t:'Jugos',items:[
+        {n:'Jugo Verde',d:'Nopal, pepino, apio y piña.'},
+        {n:'Jugo de Zanahoria',d:'Zanahoria, naranja y cúrcuma.'},
+        {n:'Tropical',d:'Piña, mango y zumo de limón.'},
+        {n:'Antioxidante',d:'Betabel, jengibre, perejil y zanahoria.'},
+        {n:'Jugo Detox',d:'Limón, pepino, piña, menta y jengibre.'}]},
+      {t:'Shots',items:[
+        {n:'Antiinflamatorio',d:'Cúrcuma, pimienta, betabel y zumo de limón.'},
+        {n:'Tōnalli',d:'Fresa, jengibre y canela.'},
+        {n:'Digestivo',d:'Piña, jengibre y papaya.'}]}]}
+  ];
+
+  function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
+  function card(it){
+    var c=el('div','item');
+    c.appendChild(el('div','n',it.n));
+    if(it.q)c.appendChild(el('div','q',it.q));
+    if(it.d){var ds=Array.isArray(it.d)?it.d:[it.d];ds.forEach(function(t){c.appendChild(el('p',null,t));});}
+    if(it.x)c.appendChild(el('div','x',it.x));
+    if(it.tags){var g=el('div','tags');it.tags.forEach(function(t){g.appendChild(el('span','tag',t));});c.appendChild(g);}
+    return c;
+  }
+  function grid(items){var g=el('div','grid');items.forEach(function(it){g.appendChild(card(it));});return g;}
+
+  var carta=document.getElementById('carta'),chips=document.getElementById('chips');
+  CARTA.forEach(function(cat){
+    var a=el('a',null,cat.t);a.href='#'+cat.id;chips.appendChild(a);
+    var s=el('div','cat');s.id=cat.id;
+    s.appendChild(el('h3',null,cat.t));
+    if(cat.note)s.appendChild(el('p','note',cat.note));
+    if(cat.items)s.appendChild(grid(cat.items));
+    if(cat.subs)cat.subs.forEach(function(sub){s.appendChild(el('h4',null,sub.t));s.appendChild(grid(sub.items));});
+    carta.appendChild(s);
+  });
+
+  var DIAS=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  var ORDEN=[1,2,3,4,5,6,0];
+  var CERRADO=4; // jueves
+  var APERTURA=8*60, CIERRE=14*60;
+
+  function ahora(){
+    try{
+      var p=new Intl.DateTimeFormat('en-US',{timeZone:'America/Mexico_City',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date());
+      var m={};p.forEach(function(x){m[x.type]=x.value;});
+      var w={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[m.weekday];
+      return {dia:w,min:(parseInt(m.hour,10)%24)*60+parseInt(m.minute,10)};
+    }catch(e){var d=new Date();return {dia:d.getDay(),min:d.getHours()*60+d.getMinutes()};}
+  }
+
+  function pintarHorario(hoy){
+    var tb=document.querySelector('#hours tbody');tb.textContent='';
+    ORDEN.forEach(function(d){
+      var tr=el('tr',(d===CERRADO?'closed':'')+(d===hoy?' today':''));
+      tr.appendChild(el('th',null,DIAS[d])).setAttribute('scope','row');
+      tr.appendChild(el('td',null,d===CERRADO?'Cerrado':'8:00 am – 2:00 pm'));
+      tb.appendChild(tr);
+    });
+  }
+
+  function estado(){
+    var n=ahora(),st=document.getElementById('status'),tx=document.getElementById('status-text');
+    var abierto=n.dia!==CERRADO&&n.min>=APERTURA&&n.min<CIERRE,msg;
+    if(abierto){msg='Abierto ahora · cerramos a las 2:00 pm';}
+    else if(n.dia!==CERRADO&&n.min<APERTURA){msg='Cerrado · abrimos hoy a las 8:00 am';}
+    else if(n.dia===3&&n.min>=CIERRE){msg='Cerrado · abrimos el viernes a las 8:00 am';}
+    else if(n.dia===CERRADO){msg='Cerrado hoy · abrimos mañana a las 8:00 am';}
+    else{msg='Cerrado · abrimos mañana a las 8:00 am';}
+    st.setAttribute('data-open',abierto?'true':'false');
+    tx.textContent=msg;
+    pintarHorario(n.dia);
+  }
+  estado();
+  setInterval(estado,60000);
+})();
+</script>
+
+</body></html>
